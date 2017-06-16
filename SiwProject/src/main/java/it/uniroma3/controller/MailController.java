@@ -29,7 +29,7 @@ public class MailController {
 	}
 	
 	@RequestMapping(value = "/sendMail", method = RequestMethod.POST)
-    public String send(Authentication authentication, HttpSession session, @RequestParam("to") String to, @RequestParam("subject") String subject) {
+    public ModelAndView send(Authentication authentication, HttpSession session, @RequestParam("to") String to, @RequestParam("message") String message) {
 
         UserModel user = (UserModel) session.getAttribute("userLogged");
     	
@@ -37,7 +37,7 @@ public class MailController {
 			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 			
 			if(userDetails == null)
-				return "redirect:/";
+				return new ModelAndView("redirect:/");
 			
 			UserModel userDB = userService.findByUsername(userDetails.getUsername());
 			
@@ -46,14 +46,17 @@ public class MailController {
 			user = userDB;
 		}		
 		
+		if(message.equals("") || message == null)
+			return new ModelAndView("sendMail", "error", "Campo vuoto");
+		
 		JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(user.getEmail());
-        message.setTo(to);
-        message.setSubject(subject);
-        javaMailSender.send(message);
+        SimpleMailMessage ms = new SimpleMailMessage();
+        ms.setFrom(user.getEmail());
+        ms.setTo(to);
+        ms.setText(message);
+        javaMailSender.send(ms);
         
-        return "successEmail";
+        return new ModelAndView("successEmail");
 		
     }
 

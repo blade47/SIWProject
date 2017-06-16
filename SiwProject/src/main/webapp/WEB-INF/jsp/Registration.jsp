@@ -36,7 +36,7 @@
                     <div align="center"><form:errors path="user.username" cssClass="error" /></div>
 					&nbsp;
                     <div align="center"><label>Password*: </label><input type="password" name="password" /></div>
-                    <div align="center"><form:errors path="user.password" cssClass="error" /></div>
+                    <div align="center"><label>${errorePassword}</label></div>
 					&nbsp;
                     <div align="center"><label>Mail*: </label><input type="text" name="email" /></div>
                     <div align="center"><form:errors path="user.email" cssClass="error" /></div>

@@ -1,6 +1,8 @@
 package it.uniroma3.model;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +23,7 @@ public class PhotoModel {
 
 	private String descrizione;
 
-	@ManyToMany(mappedBy = "fotoVotate", fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "fotoVotate", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<UserModel> utentiVotanti;
 	
 	@ManyToOne

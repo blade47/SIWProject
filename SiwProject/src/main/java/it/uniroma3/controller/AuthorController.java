@@ -98,6 +98,8 @@ public class AuthorController {
 		user.getFotoVotate().remove(photo);
 		photo.setNumeroVoti(photo.getUtentiVotanti().size());
 		
+		userService.update(user);
+		
 	    String referer = request.getHeader("Referer");
 		
 		model = new ModelAndView("redirect:"+ referer, "author", photo.getProprietario());

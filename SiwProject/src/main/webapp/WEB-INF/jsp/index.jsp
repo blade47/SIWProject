@@ -26,7 +26,7 @@
     			<option value="<c:url value="uploadPhoto" />">Upload nuove foto</option>
     			<option value="<c:url value="personalPage" />">Vedi le tue foto</option>
     			<option value="<c:url value="uploadAvatar" />">Aggiorna avatar</option>
-    			<option value="<c:url value="logout" />">Logout</option>
+    			<option value="logout">Logout</option>
 			</select>
 		</div>
 </sec:authorize>

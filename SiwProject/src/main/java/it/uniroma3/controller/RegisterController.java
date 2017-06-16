@@ -1,7 +1,7 @@
 package it.uniroma3.controller;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +16,9 @@ import it.uniroma3.service.UserService;
 @Controller
 @RequestMapping(value = "/registra")
 public class RegisterController {
+	
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@Autowired
 	private UserService userService;
@@ -32,7 +35,13 @@ public class RegisterController {
 	public ModelAndView processRegistration(@Valid @ModelAttribute("user") UserModel user, BindingResult result) {
 		
 		if (result.hasErrors())
-			return new ModelAndView("Registration");
+			return new ModelAndView("Registration", "errore", "Errore nell'inserimento");
+		
+		if(user.getPassword().length()<4)
+			return new ModelAndView("Registration", "errorePassword", "La password deve contenere almeno 4 caratteri");
+		
+		if(!user.getPassword().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$"))
+			return new ModelAndView("Registration", "errorePassword","La password deve contenere una lettera maiuscola, una minuscola e un numero");
 
 		if(userService.userExist(user.getUsername(), user.getEmail()))
 			return new ModelAndView("Registration", "errore", "Utente o Email già registrata");
@@ -41,9 +50,11 @@ public class RegisterController {
 		
 		user.setRuolo(ruolo);
 		
-		userService.create(user);
+		String password = encoder.encode(user.getPassword());
 		
+		user.setPassword(password);
 		
+		userService.create(user);	
 
 		return new ModelAndView("RegistrationSuccess", "user", user);
 	}

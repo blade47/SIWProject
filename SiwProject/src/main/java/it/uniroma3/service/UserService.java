@@ -1,9 +1,7 @@
 package it.uniroma3.service;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import it.uniroma3.model.UserModel;
@@ -21,7 +19,6 @@ public class UserService{
 	
 	@Transactional
 	public UserModel create(UserModel user) {
-//		user.setPassword(Encode(user.getPassword()));
 		return userRepository.save(user);
 	}
 	

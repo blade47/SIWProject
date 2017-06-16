@@ -31,8 +31,6 @@ public class UserModel {
     private String email;
 
 	@NotNull(message="Campo nullo")
-	@Size(min=6, max=20, message="Deve contenere almeno 6 caratteri e fino ad un massimo di 20")
-	@Pattern(regexp="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$", message="La password deve contenere una lettera maiuscola, una minuscola e un numero")
 	private String password;
 	
 	@ManyToOne
@@ -49,7 +47,7 @@ public class UserModel {
     
     private String avatar;
     
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<PhotoModel> fotoVotate;
     
     @OneToMany(mappedBy = "proprietario", cascade = CascadeType.REMOVE)

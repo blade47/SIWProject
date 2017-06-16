@@ -41,10 +41,9 @@
 		
     		<form:form action="sendMail" method="post">
     		
-    			<div align="center"><label>${errore}</label></div>
-    			&nbsp;
+    			<div align="center"><label>${error}</label></div>
     	
-			    <div align="center"><label>Messaggio: </label><textarea id="subject" name="subject" rows="5" cols="30"></textarea></div>
+			    <div align="center"><label>Messaggio: </label><textarea id="message" name="message" rows="5" cols="30"></textarea></div>
 				&nbsp;
 
                 &nbsp;

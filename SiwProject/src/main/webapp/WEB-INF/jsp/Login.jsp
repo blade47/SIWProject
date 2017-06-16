@@ -28,6 +28,7 @@
 			<section id="main">
         		<form:form action="login" method="post">
         					<div align="center"><label>${error}</label></div>
+        					<div align="center"><label>${logout}</label></div>
         					&nbsp;        		       
                     		<div align="center"><label>User Name: </label><input type="text" name="username" /></div>  
 
