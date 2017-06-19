@@ -26,6 +26,20 @@
 			
 		<!-- Main -->
 			<section id="main">
+			  	<form action="<c:url value="/connect/facebook" />" method="POST">
+					<input type="hidden" name="scope" value="public_profile,email" />
+					<div align="center">
+						<label>
+							Esegui il login tramite facebook
+						</label>
+					</div>
+					<div align="center">
+						<button type="submit" style="border: 0; background: transparent">
+							<img src="<c:url value="/images/fb.png" />" width="auto" height="100%" alt="submit" />
+						</button>
+					</div>
+				</form>
+					
         		<form:form action="login" method="post">
         					<div align="center"><label>${error}</label></div>
         					<div align="center"><label>${logout}</label></div>
@@ -36,6 +50,7 @@
                 			&nbsp;
                     		<div align="center"><input type="submit" class="button" value="Login" /></div>
         		</form:form>
+				
 			</section>
 			
 		<!-- Footer -->

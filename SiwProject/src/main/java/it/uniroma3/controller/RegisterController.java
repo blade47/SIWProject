@@ -27,8 +27,11 @@ public class RegisterController {
 	private RuoloService ruoloService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String viewRegistration() {
-		return "Registration";
+	public ModelAndView viewRegistration() {
+		ModelAndView model = new ModelAndView();
+		model.addObject("user", new UserModel()); 
+		model.setViewName("Registration");
+		return model;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -38,10 +41,10 @@ public class RegisterController {
 			return new ModelAndView("Registration", "errore", "Errore nell'inserimento");
 		
 		if(user.getPassword().length()<4)
-			return new ModelAndView("Registration", "errorePassword", "La password deve contenere almeno 4 caratteri");
+			return new ModelAndView("Registration", "errorPassword", "La password deve contenere almeno 4 caratteri");
 		
 		if(!user.getPassword().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$"))
-			return new ModelAndView("Registration", "errorePassword","La password deve contenere una lettera maiuscola, una minuscola e un numero");
+			return new ModelAndView("Registration", "errorPassword","La password deve contenere una lettera maiuscola, una minuscola e un numero");
 
 		if(userService.userExist(user.getUsername(), user.getEmail()))
 			return new ModelAndView("Registration", "errore", "Utente o Email già registrata");

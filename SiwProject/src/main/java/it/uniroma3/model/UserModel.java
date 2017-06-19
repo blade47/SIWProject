@@ -22,15 +22,16 @@ public class UserModel {
 	private int id;
 
 	@NotNull(message="Campo nullo")
-	@Size(min=2, max=10, message="Il campo deve avere minimo 2 caratteri fino ad un massimo di 10")
-	@Pattern(regexp="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$", message="L'username deve contenere almeno una lettera maiuscola, minuscola ed un numero")
+	@Size(min=2, max=20, message="Il campo deve avere minimo 2 caratteri e fino ad un massimo di 20")
+//	@Pattern(regexp="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$", message="Il campo deve contenere almeno una lettera maiuscola, minuscola ed un numero")
 	private String username;
 	
 	@NotNull(message="Campo nullo")
+	@Size(min=1, message="Inserisci una e-mail valida")
 	@Email(message="Inserisci una e-mail valida")
     private String email;
 
-	@NotNull(message="Campo nullo")
+	@NotNull(message="Campo null")
 	private String password;
 	
 	@ManyToOne

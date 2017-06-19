@@ -27,28 +27,28 @@
 		<!-- Main -->
 			<section id="main">
 
-				<form:form action="registra" method="post" enctype="multipart/form-data">
+				<form:form action="registra" method="post" enctype="multipart/form-data" commandName="user">
 				
 					<div align="center"><label>${errore}</label></div>
     				&nbsp;
 
-                    <div align="center"><label>User Name*: </label><input type="text" name="username" /></div>
-                    <div align="center"><form:errors path="user.username" cssClass="error" /></div>
+                    <div align="center"><label>Username*: </label><form:input path="username"/></div>
+                    <div align="center"><form:errors path="username" cssClass="error" /></div>
 					&nbsp;
-                    <div align="center"><label>Password*: </label><input type="password" name="password" /></div>
-                    <div align="center"><label>${errorePassword}</label></div>
+                    <div align="center"><label>Password*: </label><form:input type="password" path="password"/></div>
+                    <div align="center"><label>${errorPassword}</label></div>
 					&nbsp;
-                    <div align="center"><label>Mail*: </label><input type="text" name="email" /></div>
-                    <div align="center"><form:errors path="user.email" cssClass="error" /></div>
+                    <div align="center"><label>Mail*: </label><form:input path="email"/></div>
+                    <div align="center"><form:errors path="email" cssClass="error" /></div>
 					&nbsp;
-					<div align="center"><label>Facebook: </label><input type="text" name="facebook" /></div>
-					<div align="center"><form:errors path="user.facebook" cssClass="error" /></div>
+					<div align="center"><label>Facebook: </label><form:input path="facebook"/></div>
+					<div align="center"><form:errors path="facebook" cssClass="error" /></div>
 					&nbsp;
-					<div align="center"><label>Instagram: </label><input type="text" name="instagram" /></div>
-					<div align="center"><form:errors path="user.instagram" cssClass="error" /></div>
+					<div align="center"><label>Instagram: </label><form:input path="instagram"/></div>
+					<div align="center"><form:errors path="instagram" cssClass="error" /></div>
 					&nbsp;
-					<div align="center"><label>Linkedin: </label><input type="text" name="linkedin" /></div>
-					<div align="center"><form:errors path="user.linkedin" cssClass="error" /></div>
+					<div align="center"><label>Linkedin: </label><form:input path="linkedin"/></div>
+					<div align="center"><form:errors path="linkedin" cssClass="error" /></div>
 					&nbsp;
                    	
                    	<div align="center"><input type="submit" class="button" value="Registrati!" /></div>

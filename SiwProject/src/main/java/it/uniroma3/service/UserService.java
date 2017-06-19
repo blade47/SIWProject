@@ -27,6 +27,11 @@ public class UserService{
 		return userRepository.findOne(id);
 	}
 	
+	@Transactional
+	public UserModel findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+	
 //	@Transactional
 //	public String Encode(String password){
 //		return encoder.encode(password);
