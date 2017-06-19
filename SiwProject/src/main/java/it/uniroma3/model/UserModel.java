@@ -26,12 +26,12 @@ public class UserModel {
 //	@Pattern(regexp="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$", message="Il campo deve contenere almeno una lettera maiuscola, minuscola ed un numero")
 	private String username;
 	
-	@NotNull(message="Campo nullo")
+	@NotNull
 	@Size(min=1, message="Inserisci una e-mail valida")
 	@Email(message="Inserisci una e-mail valida")
     private String email;
 
-	@NotNull(message="Campo null")
+	@NotNull(message="Campo nullo")
 	private String password;
 	
 	@ManyToOne
