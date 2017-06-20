@@ -37,13 +37,10 @@ public class UserModel {
 	@ManyToOne
     private RuoloModel ruolo;
     
-    @Size(max=20, message="Il campo deve avere fino ad un massimo di 20 caratteri")
     private String facebook;
     
-    @Size(max=20, message="Il campo deve avere fino ad un massimo di 20 caratteri")
     private String instagram;
     
-    @Size(max=20, message="Il campo deve avere fino ad un massimo di 20 caratteri")
     private String linkedin;
     
     private String avatar;

@@ -52,11 +52,13 @@ public class FacebookController {
 		if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
 			return "redirect:/connect/facebook";
 		}
-		
+
 		Facebook facebook = connectionRepository.findPrimaryConnection(Facebook.class).getApi();
 
 		String [] fields = { "id", "email", "link", "first_name", "last_name" };
 		User userProfile = facebook.fetchObject("me", User.class, fields);
+		
+		connectionRepository.removeConnection(connectionRepository.findPrimaryConnection(Facebook.class).getKey());
 		
 		UserModel user = userService.findByEmail(userProfile.getEmail());
 
@@ -94,8 +96,6 @@ public class FacebookController {
 		SecurityContextHolder.getContext().setAuthentication(auth);
 
 		session.setAttribute("userLogged", user);
-
-		connectionRepository.removeConnection(connectionRepository.findPrimaryConnection(Facebook.class).getKey());
 		
 		return "redirect:/";
 	}
